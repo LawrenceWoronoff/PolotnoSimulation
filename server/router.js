@@ -33,7 +33,9 @@ module.exports = function (app) {
   //= ========================
 
   apiRoutes.use('/polotno', polotnoRoutes);
-  polotnoRoutes.post('/export-jpg', PolotnoController.run);
+  polotnoRoutes.post('/process-template', PolotnoController.run);
+  polotnoRoutes.post('/template-view', PolotnoController.templateView);
+
 
   // Set auth routes as subgroup/middleware to apiRoutes
   apiRoutes.use('/auth', authRoutes);
