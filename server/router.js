@@ -1,5 +1,6 @@
 const AuthenticationController = require('./controllers/authentication');
 const PolotnoController = require('./controllers/polotno');
+const FileController = require('./controllers/file')
 const UserController = require('./controllers/user');
 const ChatController = require('./controllers/chat');
 const CommunicationController = require('./controllers/communication');
@@ -26,6 +27,7 @@ module.exports = function (app) {
     payRoutes = express.Router(),
     communicationRoutes = express.Router();
     polotnoRoutes = express.Router();
+    fileRoutes = express.Router();
 
   //= ========================
   // Auth Routes
@@ -35,6 +37,22 @@ module.exports = function (app) {
   apiRoutes.use('/polotno', polotnoRoutes);
   polotnoRoutes.post('/process-template', PolotnoController.run);
   polotnoRoutes.post('/template-view', PolotnoController.templateView);
+
+
+  apiRoutes.use('/file', fileRoutes);
+  fileRoutes.post('/upload-template', FileController.uploadFile);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   // Set auth routes as subgroup/middleware to apiRoutes
