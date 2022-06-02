@@ -1,5 +1,8 @@
 const fs = require('fs');
-// import polotno-node API
+// import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+// import fetch from 'fetch';
+
 const { createInstance } = require('polotno-node');
 
 let layerChecked = {
@@ -15,6 +18,12 @@ let layerChecked = {
   priceview: false,
   listing_image: false,
 };
+async function getBlob (url) {
+  let blob = await fetch(url).then(r => r.blob());
+  console.log(blob);
+  return blob;
+}
+
 exports.run = async function (req, res, next) {
     const jsonFileName = req.body.jsonFile;
     const feed = req.body.feed;
@@ -35,6 +44,13 @@ exports.run = async function (req, res, next) {
       switch(child.name) {
         case 'listing_image':
           layerChecked.listing_image = true;
+          // child.src = feed.listing_image;
+          
+          // console.log(getBlob)
+          // if(feed.hasOwnProperty('listing_image') && feed.listing_image != ""){
+          //   getBlob(feed.listing_image);
+          //   // console.log(blob);
+          // }
           break;
         case 'bath_count':
           layerChecked.bath_count = true;

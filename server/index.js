@@ -8,7 +8,6 @@ const express = require('express'),
   socketEvents = require('./socketEvents'),
   config = require('./config/main');
   cors = require('cors');
-
 // Database Setup
 // mongoose.connect(config.database);
 

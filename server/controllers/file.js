@@ -1,6 +1,3 @@
-// const fs = require('fs');
-// import polotno-node API
-// const { createInstance } = require('polotno-node');
 const multer = require('multer');
 const path = require("path");
 
